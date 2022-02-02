@@ -3,7 +3,7 @@
 # We are using AES for Symmetric Encryption
 # No Authentication
 
-# Recommendation: Use AE for Authenticated Encryption
+# Recommendation: Use AEAD for Authenticated Encryption
 
 
 # Importing Libraries/Modules

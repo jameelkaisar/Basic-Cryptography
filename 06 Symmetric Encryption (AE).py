@@ -4,6 +4,8 @@
 # AE: Authenticated Encryption
 # We are using HMAC with SHA256 for Authentication (Encrypt-then-MAC)
 
+# Recommendation: Use AEAD for Authenticated Encryption
+
 
 # Importing Libraries/Modules
 from cryptography.hazmat.primitives.ciphers import Cipher
