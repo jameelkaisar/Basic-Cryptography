@@ -3,6 +3,8 @@
 # We are using RSA for Asymmetric Cryptography
 # Signing and Asymmetric Encryption
 
+# Recommendation: Use Ed25519 for Signing
+
 
 # Importing Libraries/Modules
 from cryptography.hazmat.primitives.asymmetric import rsa
