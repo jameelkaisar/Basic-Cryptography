@@ -1,23 +1,20 @@
 # Key Exchange
 # Key Exchange algorithms are used to agree upon a shared secret between two communicating parties
-# DH: Diffie Hellman
-# We are using DH for Key Exchange
-
-# Recommendation: Use ECDH for Key Exchange
+# ECDH: Elliptic Curve Diffie Hellman
+# We are using ECDH (Based on Curve25519) for Key Exchange
 
 
 # Importing Libraries/Modules
-from cryptography.hazmat.primitives.asymmetric import dh
+from cryptography.hazmat.primitives.asymmetric.x25519 import X25519PrivateKey
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 import time
 
 
-# Class for Diffie Hellman Node
+# Class for Elliptic Curve Diffie Hellman Node
 class Node():
-    def __init__(self, parameters):
-        self.parameters = parameters
-        self.private_key = self.parameters.generate_private_key()
+    def __init__(self):
+        self.private_key = X25519PrivateKey.generate()
         self.public_key = self.private_key.public_key()
         self.shared_key = None
         self.derived_key = None
@@ -40,19 +37,15 @@ class Node():
         return self.derived_key
 
 
-# Diffie Hellman
-print("Diffie Hellman:")
+# Elliptic Curve Diffie Hellman
+print("Elliptic Curve Diffie Hellman:")
 
 # Starting Timer
 start_time = time.time()
 
-# Generating Parameters (takes time)
-# You can reuse parameters
-parameters = dh.generate_parameters(generator=2, key_size=2048)
-
 # Creating Objects
-node_falaen = Node(parameters)
-node_fistaen = Node(parameters)
+node_falaen = Node()
+node_fistaen = Node()
 
 # Exchanging Public Keys
 handshake_data = b"Handshake Data (You can skip this)"
